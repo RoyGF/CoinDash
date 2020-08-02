@@ -1,5 +1,8 @@
 extends Area2D
 
+signal pickup
+signal hurt
+
 export (int) var speed
 var velocity = Vector2()
 var screensize = Vector2(480, 720)
@@ -42,4 +45,10 @@ func get_input():
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 
-
+func _on_Player_area_entered(area):
+	if area.is_in_group("coins"):
+		area.pickup()
+		emit_signal("pickup")
+	if area.is_in_group("hurt"):
+		emit_signal("die")
+		die()
