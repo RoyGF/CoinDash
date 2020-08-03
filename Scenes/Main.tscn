@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://images/grass.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Powerup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Level.wav" type="AudioStream" id=10]
 [ext_resource path="res://Scenes/Cactus.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Ontiva.com_VVVVVV Soundtrack 04-16 Pushing Onwards (64  kbps).ogg" type="AudioStream" id=12]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -51,6 +52,9 @@ stream = ExtResource( 6 )
 
 [node name="PowerupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 
 [node name="PowerupTimer" type="Timer" parent="."]
 one_shot = true

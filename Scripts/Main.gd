@@ -36,6 +36,7 @@ func new_game():
 	spawn_coins()
 	$HUD.update_score(score)
 	$HUD.update_timer(time_left)
+	$BackgroundSound.play()
 
 func game_over():
 	playing = false
@@ -45,6 +46,7 @@ func game_over():
 	$HUD.show_game_over()
 	$Player.die()
 	$EndSound.play()
+	$BackgroundSound.stop()
 
 func spawn_coins():
 	for i in range(4 + level):
