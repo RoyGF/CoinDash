@@ -2,6 +2,8 @@ extends Area2D
 
 signal pickup
 signal hurt
+signal coin
+signal powerup
 
 export (int) var speed
 var velocity = Vector2()
@@ -48,7 +50,14 @@ func get_input():
 func _on_Player_area_entered(area):
 	if area.is_in_group("coins"):
 		area.pickup()
-		emit_signal("pickup")
-	if area.is_in_group("hurt"):
-		emit_signal("die")
+		emit_signal("pickup", "coin")
+	if area.is_in_group("powerups"):
+		area.pickup()
+		emit_signal("pickup", "powerup")
+	if area.is_in_group("obstacles"):
+		emit_signal("hurt")
 		die()
+
+
+func _on_Lifetime_timeout():
+	queue_free()
