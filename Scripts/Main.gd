@@ -20,6 +20,7 @@ func _process(delta):
 		level += 1
 		time_left += 5
 		spawn_coins()
+		$LevelSound.play()
 
 func new_game():
 	playing = true
@@ -40,6 +41,7 @@ func game_over():
 		coin.queue_free()
 	$HUD.show_game_over()
 	$Player.die()
+	$EndSound.play()
 
 func spawn_coins():
 	for i in range(4 + level):
@@ -61,3 +63,4 @@ func _on_Player_hurt():
 func _on_Player_pickup():
 	score += 1
 	$HUD.update_score(score)
+	$CoinSound.play()
