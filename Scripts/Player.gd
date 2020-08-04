@@ -30,7 +30,7 @@ func _process(delta):
 	
 	if velocity.length() > 0:
 		$AnimatedSprite.animation = "run"
-		$AnimatedSprite.flip_h = velocity.x < 0
+		$AnimatedSprite.flip_h = velocity.x > 0
 	else:
 		$AnimatedSprite.animation = "idle"
 

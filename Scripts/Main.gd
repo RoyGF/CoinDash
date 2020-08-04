@@ -76,21 +76,8 @@ func _on_Player_pickup(type):
 			$PowerupSound.play()
 			$HUD.update_timer(time_left)
 
-
 func _on_PowerupTimer_timeout():
 	var p = Powerup.instance()
 	add_child(p)
 	p.screensize = screensize
 	p.position = Vector2(rand_range(0, screensize.x), rand_range(0, screensize.y))
-
-
-
-
-
-
-
-
-
-
-
-
