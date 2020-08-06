@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://images/grass.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Level.wav" type="AudioStream" id=10]
 [ext_resource path="res://Scenes/Cactus.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Ontiva.com_VVVVVV Soundtrack 04-16 Pushing Onwards (64  kbps).ogg" type="AudioStream" id=12]
+[ext_resource path="res://Joystick/scene/joystick.tscn" type="PackedScene" id=13]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -61,6 +62,9 @@ one_shot = true
 
 [node name="Cactus" parent="." instance=ExtResource( 11 )]
 position = Vector2( 363.252, 217.951 )
+
+[node name="joystick" parent="." instance=ExtResource( 13 )]
+position = Vector2( 251, 600 )
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_Player_pickup"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]

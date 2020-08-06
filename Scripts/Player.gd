@@ -9,6 +9,8 @@ export (int) var speed
 var velocity = Vector2()
 var screensize = Vector2(480, 720)
 
+onready var joystick = get_parent().get_node("joystick/TouchScreenButton")
+
 func start(pos):
 	set_process(true)
 	position = pos
@@ -22,15 +24,14 @@ func _ready():
 	pass
 
 func _process(delta):
-	get_input()
-	position += velocity * delta
+	position += joystick.get_value() * speed * delta
 	
 	position.x = clamp(position.x, 0, screensize.x)
 	position.y = clamp(position.y, 0, screensize.y)
 	
-	if velocity.length() > 0:
+	if joystick.get_value().length() > 0:
 		$AnimatedSprite.animation = "run"
-		$AnimatedSprite.flip_h = velocity.x < 0
+		$AnimatedSprite.flip_h = joystick.get_value().x < 0
 	else:
 		$AnimatedSprite.animation = "idle"
 
@@ -57,7 +58,6 @@ func _on_Player_area_entered(area):
 	if area.is_in_group("obstacles"):
 		emit_signal("hurt")
 		die()
-
 
 func _on_Lifetime_timeout():
 	queue_free()

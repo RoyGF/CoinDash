@@ -9,6 +9,7 @@
 radius = 90.0
 
 [node name="joystick" type="Sprite"]
+position = Vector2( 250, 250 )
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
